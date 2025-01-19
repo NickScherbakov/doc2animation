@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+*.class
+*.so
+.Python
+env/
+build/
+dist/
+*.egg-info/
+output/
+*.mp4
+*.mp3
+.idea/
+.vscode/
