@@ -40,6 +40,7 @@ class DocumentToAnimation:
             for frame in tqdm(frames, desc="Converting frames"):
                 self.apply_fade_in_effect(frame)
             save_animation(frames, self.config['output_path'])
+            self.create_presentation(document_path, self.config['output_path'])
         except Exception as e:
             logging.error(f"Conversion failed: {e}")
             raise DocumentConversionError(f"Conversion failed: {e}")
@@ -123,3 +124,11 @@ class DocumentToAnimation:
             frames.append(frame)
             
         return frames
+
+    def create_presentation(self, input_path, output_path):
+        """Создает презентацию из документа."""
+        frames = self.extract_frames(input_path)
+        animated_frames = []
+        for frame in tqdm(frames, desc="Применение эффектов"):
+            animated_frames.extend(self.apply_fade_in_effect(frame))
+        save_animation(animated_frames, output_path)

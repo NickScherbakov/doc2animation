@@ -30,5 +30,6 @@
 from src.converter import DocumentToAnimation
 import asyncio
 
-converter = DocumentToAnimation()
-asyncio.run(converter.create_presentation("input.pdf", "output.mp4"))
+converter = DocumentToAnimation("config.json")
+converter.convert("input.pdf")
+```

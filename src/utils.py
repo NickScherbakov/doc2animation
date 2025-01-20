@@ -67,3 +67,5 @@ def save_animation(frames, output_path):
 class DocumentConversionError(Exception):
     """Custom exception for document conversion errors."""
     pass
+
+# Убедитесь, что все функции используются правильно и нет ненужных импортов
