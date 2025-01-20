@@ -47,8 +47,22 @@ def load_config(config_path):
 
 def save_animation(frames, output_path):
     """Save frames as an animation to the specified output path."""
-    # ...implementation...
-    pass
+    import cv2
+    
+    # Определяем размеры кадра из первого фрейма
+    height, width = frames[0].shape[:2]
+    
+    # Создаем объект VideoWriter
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+    out = cv2.VideoWriter(output_path, fourcc, 24.0, (width, height))
+    
+    try:
+        # Записываем каждый кадр
+        for frame in frames:
+            out.write(frame)
+    finally:
+        # Закрываем writer
+        out.release()
 
 class DocumentConversionError(Exception):
     """Custom exception for document conversion errors."""
